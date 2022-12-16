@@ -1,0 +1,52 @@
+
+
+// Container Principal
+.container {
+    width: 100%;
+    height : 100vh;
+    display: flex;
+    flex-direction: row;
+    background-color: #000000;
+    color: rgb(255, 255, 255);
+  
+    // Fond d'écran formulaire
+    .background {
+      width: 75%;
+      background-image: url(../../assets/images/login/background.png);
+      background-position: center;
+      background-size: cover;
+      background-repeat: no-repeat;
+      display: flex;
+    
+    }
+  
+    // Partie droite (Formulaire)
+    .formulaire {
+      width: 100%;
+      height: 100vh;
+      display: flex;
+      flex: 1;
+      flex-direction: column;
+      justify-content: space-evenly;
+      padding: 3em;
+
+      .logo{
+        height: 10%;
+        display: flex;
+        align-items: flex-start;
+        justify-content: flex-start;
+      
+      }
+      
+
+      .login{
+        width: 100%;
+        height: 100%;
+        margin: 5%;
+        display:flex ;
+        flex-direction: column;
+      }
+    }
+  }
+  
+  

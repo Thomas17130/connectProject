@@ -1,0 +1,16 @@
+<div class="sidebar">
+
+  <div class="logo">
+      <img routerLink="/header" src="/assets/images/sidebar/logo.png" alt="Octom.">
+  </div>
+
+  <section class="menu">
+      <ul>
+      <ng-container *ngFor="let item of menu">
+        <li [routerLink]="'/' + (item)"><img src="/assets/images/sidebar/{{item}}-icon.png" alt="{{item}}"></li>
+        <!-- <li (clic)="navTo(item)"><img src="/assets/images/sidebar/{{item}}-icon.png" alt="{{item}}"></li> -->
+      </ng-container>
+      </ul>
+  </section>
+
+</div>

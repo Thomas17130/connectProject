@@ -1,0 +1,33 @@
+.sidebar {
+  display: flex;
+  flex-flow: column wrap;
+  height: 100%;
+  background-color: #1E1F25;
+  padding: 0.5em;
+  justify-content: center;
+  align-items: center;
+}
+
+.logo {
+  cursor: pointer;
+}
+
+.logo:hover {
+  transform: scale(1.2);
+}
+
+ul {
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+
+  li {
+    list-style: none;
+    cursor: pointer;
+    margin: 0.5em;
+  }
+
+  li:hover {
+    transform: scale(1.5);
+  }
+}
