@@ -1,12 +1,89 @@
-<form class="login">
-    <!-- Inputs Email & Password -->
-    <label for="Email">Email</label>
-    <app-input placeholder="Email"></app-input>
-    <label for="password">Password</label>
-    <app-input placeholder="Password"></app-input>
-    <!-- Checkbox -->
-    <app-checkbox></app-checkbox>
-    <!-- Bouton Valider & Google-->
-    <app-button icon="../asset/image/login/google-1088004_1280.webp"></app-button>
-  </form>
+<h1>Sign up</h1>
 
+<form [formGroup]="registerForm">
+    
+  
+  <label for="text">Firstname</label>
+
+  <app-input type="text" formControlName="firstname" placeholder="Enter firstname"></app-input>
+
+  <div class="error" *ngIf="firstname?.touched && firstname?.errors">
+    <span *ngIf="firstname?.errors!['required']">Champs requis</span>
+    <span *ngIf="firstname?.errors!['minlength']">Username must have at least 8 char. (Currently: {{
+      firstname?.errors!['minlength']?.actualLength }})</span>
+    <span *ngIf="firstname?.errors!['maxlength']">Username must have at most 10 char. (Currently: {{
+      firstname?.errors!['maxlength']?.actualLength }})</span>
+  </div>
+
+  <label for="text">Name</label>
+
+  <app-input type="text" formControlName="name" placeholder="Enter name">Name</app-input>
+
+  <div class="error" *ngIf="name?.touched && name?.errors">
+    <span *ngIf="name?.errors!['required']">Champs requis</span>
+    <span *ngIf="name?.errors!['minlength']">name must have at least 8 char. (Currently: {{
+      name?.errors!['minlength']?.actualLength }})</span>
+    <span *ngIf="name?.errors!['maxlength']">Name must have at most 10 char. (Currently: {{
+      name?.errors!['maxlength']?.actualLength }})</span>
+  </div>
+
+  <label for="email">Email</label>
+
+  <app-input type="email" placeholder="Enter Email" name="email" formControlName="email">Email</app-input>
+
+  <div class="error" *ngIf="email?.touched && email?.errors">
+    Invalid E-mail Address
+  </div>
+
+  <label for="Password">Password</label>
+
+  <app-input type="password" placeholder="Enter Password" formControlName="password">Password</app-input>
+
+  <div class="error" *ngIf="password?.touched && password?.errors">
+    Password must be at least 8 char includes min 1 uppercase, 1 lowercase, 1 special char.
+  </div>
+
+  <label for="Password">Confirm Password</label>
+
+  <app-input type="password" placeholder="Confirm Password" formControlName="Confirm password">Confirm password</app-input>
+
+  <div class="error" *ngIf="password?.touched && password?.errors">
+    Password must be at least 8 char includes min 1 uppercase, 1 lowercase, 1 special char.
+  </div>
+
+  <label for="email">Phone Number</label>
+  
+  <div formArrayName="phones">
+    <div *ngFor="let phone of phones.controls; let i=index; let first=first" [formGroupName]="i">
+      <select formControlName="phonePrefix" required>
+        <option selected hidden value="">Code</option>
+        <option value="66">+98</option>
+        <option value="66">+99</option>
+        <option value="66">+90</option>
+        <option value="66">+66</option>
+        <option value="66">+33</option>
+      </select>
+      <app-input type="phone" name="phone" formControlName="phoneNumber" placeholder="812345678"></app-input>
+      <span (click)="deletePhone(i)" *ngIf="!first">Remove</span> 
+      <div class="error" *ngIf="getPhoneNumber(i)?.touched && getPhoneNumber(i)?.errors">
+        Invalid Phone Number
+      </div>
+    </div>
+  </div>
+  <div class="addPhone"(click)="addPhone()" >+ Add Phone number</div>
+  <span class="error" *ngIf="phones?.length == 3">You can add up to 3 number max</span>
+
+  <p>
+    <input type="checkbox" formControlName="terms"> By creating an account you agree to our 
+      <a href="#"
+      style="color:#007aff">Terms & Privacy
+      </a>.</p>
+
+  <div class="error" *ngIf="terms?.touched && terms?.errors">
+    You must agree to the terms in order to register
+  </div>
+
+  <div class="clearfix">
+    <app-button icon="../asset/image/login/google-1088004_1280.webp"></app-button>
+  </div>
+  

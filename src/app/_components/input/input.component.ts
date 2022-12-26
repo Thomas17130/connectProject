@@ -1,4 +1,5 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+
 
 @Component({
   selector: 'app-input',
@@ -7,5 +8,5 @@ import { Component, Input } from '@angular/core';
 })
 export class InputComponent {
 
-  @Input() placeholder!: string;
+  @Input() placeholder!: string;  
 }
