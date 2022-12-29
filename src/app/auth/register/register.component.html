@@ -1,61 +1,61 @@
 <h1>Sign up</h1>
 
-<form [formGroup]="registerForm">
+<form [formGroup]="registerForm"(submit)="submit()">
     
   
   <label for="text">Firstname</label>
 
-  <app-input type="text" formControlName="firstname" placeholder="Enter firstname"></app-input>
+  <app-input type="text" formControlName="firstname"field="firstname"></app-input>
 
-  <div class="error" *ngIf="firstname?.touched && firstname?.errors">
+  <ng-container class="error" *ngIf="firstname?.touched && firstname?.errors">
     <span *ngIf="firstname?.errors!['required']">Champs requis</span>
     <span *ngIf="firstname?.errors!['minlength']">Username must have at least 8 char. (Currently: {{
       firstname?.errors!['minlength']?.actualLength }})</span>
     <span *ngIf="firstname?.errors!['maxlength']">Username must have at most 10 char. (Currently: {{
       firstname?.errors!['maxlength']?.actualLength }})</span>
-  </div>
+    </ng-container >
 
   <label for="text">Name</label>
 
-  <app-input type="text" formControlName="name" placeholder="Enter name">Name</app-input>
+  <app-input type="text" formControlName="name" placeholder="Enter name"field="name">Name</app-input>
 
-  <div class="error" *ngIf="name?.touched && name?.errors">
+  <ng-container class="error" *ngIf="name?.touched && name?.errors">
     <span *ngIf="name?.errors!['required']">Champs requis</span>
     <span *ngIf="name?.errors!['minlength']">name must have at least 8 char. (Currently: {{
       name?.errors!['minlength']?.actualLength }})</span>
     <span *ngIf="name?.errors!['maxlength']">Name must have at most 10 char. (Currently: {{
       name?.errors!['maxlength']?.actualLength }})</span>
-  </div>
+  </ng-container>
 
   <label for="email">Email</label>
 
-  <app-input type="email" placeholder="Enter Email" name="email" formControlName="email">Email</app-input>
+  <app-input type="email" placeholder="Enter Email" field="email" formControlName="email">Email</app-input>
 
-  <div class="error" *ngIf="email?.touched && email?.errors">
+  <ng-container class="error" *ngIf="email?.touched && email?.errors">
     Invalid E-mail Address
-  </div>
+  </ng-container>
 
   <label for="Password">Password</label>
 
-  <app-input type="password" placeholder="Enter Password" formControlName="password">Password</app-input>
+  <app-input type="password" placeholder="Enter Password" formControlName="password"field="password">Password</app-input>
 
-  <div class="error" *ngIf="password?.touched && password?.errors">
+  <ng-container class="error" *ngIf="password?.touched && password?.errors">
     Password must be at least 8 char includes min 1 uppercase, 1 lowercase, 1 special char.
-  </div>
+  </ng-container>
 
   <label for="Password">Confirm Password</label>
 
-  <app-input type="password" placeholder="Confirm Password" formControlName="Confirm password">Confirm password</app-input>
+  <app-input type="password" placeholder="Confirm Password" formControlName="confirmPassword" field="confirmPassword">Confirm password</app-input>
 
-  <div class="error" *ngIf="password?.touched && password?.errors">
+  <ng-container class="error" *ngIf="confirmPassword?.touched && confirmPassword?.errors">
     Password must be at least 8 char includes min 1 uppercase, 1 lowercase, 1 special char.
-  </div>
+  </ng-container>
 
   <label for="email">Phone Number</label>
   
   <div formArrayName="phones">
-    <div *ngFor="let phone of phones.controls; let i=index; let first=first" [formGroupName]="i">
-      <select formControlName="phonePrefix" required>
+    <ng-container *ngFor="let phone of phones.controls; let i=index; let first=first" [formGroupName]="i">
+      <select formControlName="phonePrefix" >
         <option selected hidden value="">Code</option>
         <option value="66">+98</option>
         <option value="66">+99</option>
@@ -63,12 +63,12 @@
         <option value="66">+66</option>
         <option value="66">+33</option>
       </select>
-      <app-input type="phone" name="phone" formControlName="phoneNumber" placeholder="812345678"></app-input>
+      <app-input type="text" formControlName="phoneNumber" placeholder="812345678" field="number"></app-input>
       <span (click)="deletePhone(i)" *ngIf="!first">Remove</span> 
       <div class="error" *ngIf="getPhoneNumber(i)?.touched && getPhoneNumber(i)?.errors">
         Invalid Phone Number
       </div>
-    </div>
+    </ng-container>
   </div>
   <div class="addPhone"(click)="addPhone()" >+ Add Phone number</div>
   <span class="error" *ngIf="phones?.length == 3">You can add up to 3 number max</span>
@@ -84,6 +84,10 @@
   </div>
 
   <div class="clearfix">
-    <app-button icon="../asset/image/login/google-1088004_1280.webp"></app-button>
+    <!-- <app-button icon="../asset/image/login/google-1088004_1280.webp"></app-button> -->
+    <app-button type="submit" value="Register">Sign up</app-button> 
+    <app-button type="submit" className="google" value="Register" icon="../../asset/image/login/google-1088004_1280.webp">Sign In with Google</app-button> 
+
   </div>
+</form>
   

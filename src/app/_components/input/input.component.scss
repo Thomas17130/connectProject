@@ -1,13 +1,8 @@
-.form {
-  display: flex;
-  flex-direction: column;
-}
-.form{
-  input{
-    padding:10px 0 10px 0;
+input{
+    width: 90%;
+    height: 4vh;
+    margin-top: 15px;
     border-radius: 5px;
-    background-color: #1e1f25;
-    border: grey solid 1px;
-    
-  }
+    border: #1E1F25 solid 1px;
+    background-color: #1E1F25;
 }

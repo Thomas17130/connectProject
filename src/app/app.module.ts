@@ -37,7 +37,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     MessageErrorComponent,
     AuthComponent,
     RegisterComponent,
-    ForgotPasswordComponent
+    ForgotPasswordComponent,
   ],
   imports: [
     BrowserModule,

@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 
 @Component({
@@ -9,4 +9,7 @@ import { Component, Input, OnInit } from '@angular/core';
 export class InputComponent {
 
   @Input() placeholder!: string;  
+  @Input() label!: string;
+  @Input() field!: string;
+  @Input() type: string = '';
 }

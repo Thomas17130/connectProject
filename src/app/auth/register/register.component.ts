@@ -17,13 +17,13 @@ export class RegisterComponent implements OnInit{
     this.registerForm = this.formBuilder.group({
       firstname: ['', [
         Validators.required,
-        Validators.minLength(8),
-        Validators.maxLength(10)
+        Validators.minLength(5),
+        Validators.maxLength(20)
       ]], // Valeur par défaut
       name: ['', [
         Validators.required,
-        Validators.minLength(8),
-        Validators.maxLength(10)
+        Validators.minLength(5),
+        Validators.maxLength(20)
       ]], // Valeur par défaut
       email: ['',
         [
@@ -32,8 +32,11 @@ export class RegisterComponent implements OnInit{
         ]],
       password: ['', [
         Validators.required,
-        Validators.minLength(8),
-        Validators.maxLength(10),      
+        Validators.maxLength(20),      
+      ]],
+      confirmPassword: ['', [
+        Validators.required,
+        Validators.maxLength(20),      
       ]],
       phones: this.formBuilder.array([]),
       terms: ['', [
@@ -60,6 +63,10 @@ export class RegisterComponent implements OnInit{
     return this.registerForm.get('password');
   }
 
+  get confirmPassword() {
+    return this.registerForm.get('confirmPassword');
+  }
+
   get phones() {
     return this.registerForm.get('phones') as FormArray;
   }
@@ -72,8 +79,7 @@ export class RegisterComponent implements OnInit{
     let phone = this.formBuilder.group({
       phonePrefix: '',
       phoneNumber: ['', [
-        Validators.required,
-        Validators.minLength(9),
+        Validators.minLength(10),
         Validators.maxLength(10),
         Validators.pattern('^[0-9]*$')
       ]]
@@ -81,8 +87,6 @@ export class RegisterComponent implements OnInit{
 
     if(this.phones.length < 3)
       this.phones.push(phone); // 0 => phone // 1 => ph
-
-    console.log(this.phones);
   }
 
   getPhoneNumber(index: number) {
@@ -99,7 +103,7 @@ export class RegisterComponent implements OnInit{
 
 
   submit() {
-    if (!this.registerForm.valid) {
+    if (this.registerForm!.valid) {
       alert('Form is invalid')
       return;
     }

@@ -1,4 +1,13 @@
+form{
+    display: flex;
+    flex-direction: column;
+}
 .addPhone{
     color: #007aff;
     cursor: pointer;
 }
+.error{
+    width: 100%;
+    height: 2%;
+    color: red;
+  }
